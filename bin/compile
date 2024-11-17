@@ -46,13 +46,13 @@ cd $BUILD_DIR
 
 if [[ -f requirements.txt ]]; then
   puts-step "Installing dependencies using pip"
-  python3 -m pip install --quiet -r requirements.txt | indent
+  pip install --quiet -r requirements.txt | indent
 else
   puts-step "Installing Pelican"
-  python3 -m pip install --quiet pelican | indent
+  pip install --quiet pelican | indent
 
   puts-step "Installing Markdown"
-  python3 -m pip install --quiet Markdown | indent
+  pip install --quiet Markdown | indent
 fi
 
 puts-step "Running pelican"
