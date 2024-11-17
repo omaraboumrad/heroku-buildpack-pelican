@@ -28,7 +28,7 @@ mkdir -p $BUILD_DIR/local/sbin
 
 if [[ ! -d "$CACHE_DIR/$PYTHON_VERSION" ]]; then
   cd $CACHE_DIR
-  puts-step "Installing Python ($PYTHON_VERSION)"
+  puts-step "Installing python3 ($PYTHON_VERSION)"
   mkdir $PYTHON_VERSION
   curl https://lang-python.s3.amazonaws.com/$PYTHON_STACK/runtimes/$PYTHON_VERSION.tar.gz -s | tar zx -C $PYTHON_VERSION &> /dev/null
 fi
@@ -43,19 +43,19 @@ export LIBRARY_PATH=$CACHE_DIR/$PYTHON_VERSION/lib
 export LD_LIBRARY_PATH=$CACHE_DIR/$PYTHON_VERSION/lib
 
 puts-step "Ensure pip"
-python -m ensurepip --upgrade | indent
+python3 -m ensurepip --upgrade | indent
 
 cd $BUILD_DIR
 
 if [[ -f requirements.txt ]]; then
   puts-step "Installing dependencies using pip"
-  python -m pip install --quiet -r requirements.txt | indent
+  python3 -m pip install --quiet -r requirements.txt | indent
 else
   puts-step "Installing Pelican"
-  python -m pip install --quiet pelican | indent
+  python3 -m pip install --quiet pelican | indent
 
   puts-step "Installing Markdown"
-  python -m pip install --quiet Markdown | indent
+  python3 -m pip install --quiet Markdown | indent
 fi
 
 puts-step "Running pelican"
