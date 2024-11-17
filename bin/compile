@@ -44,7 +44,7 @@ export LD_LIBRARY_PATH=$CACHE_DIR/$PYTHON_VERSION/lib
 
 cd $BUILD_DIR
 
-apt install -y python3-pip
+sudo apt install -y python3-pip
 
 if [[ -f requirements.txt ]]; then
   puts-step "Installing dependencies using pip"
